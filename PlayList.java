@@ -139,7 +139,7 @@ class PlayList {
      public void add(PlayList other) {
         if (other.getSize() + getSize()<=getMaxSize()){
             for(int i = 0; i<other.getSize();i++){
-                track.add(other.getTrack(i));
+                add(other.getTrack(i));
             }
         }
     }
