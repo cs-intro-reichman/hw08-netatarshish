@@ -58,7 +58,7 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
-        if(getSize!=0){
+        if(getSize()!=0){
             tracks[getSize()-1] = null;
             size --;
         }
@@ -68,7 +68,7 @@ class PlayList {
     public int totalDuration() {
         int sumDuration = 0;
         for(int i = 0; i<getSize(); i++){
-            sumDuration += Track.getDuration(tracks[i]);
+            sumDuration += getDuration(tracks[i]);
         }
         return sumDuration;
     }
@@ -122,7 +122,7 @@ class PlayList {
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
         for (int i = 0; i < getSize() ; i++) {
-            if(Track.getTitle(tracks[i]) == title){
+            if(getTitle(tracks[i]) == title){
                 remove(i);
             }
         }
@@ -151,14 +151,14 @@ class PlayList {
      *  If start is negative or greater than size - 1, returns -1.
      */
     private int minIndex(int start) {
-        int minDuration = Track.getDuration(tracks[start]);
+        int minDuration = getDuration(tracks[start]);
         int place = start;
         if(start<0 || start>getSize()){
             return -1;
         }
         for (int i = start; i<getSize(); i++){
-            if(Track.getDuration(tracks[i])<minDuration){
-                minDuration = Track.getDuration(tracks[i]);
+            if(getDuration(tracks[i])<minDuration){
+                minDuration = getDuration(tracks[i]);
                 place = i;
             }
         }
