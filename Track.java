@@ -17,7 +17,7 @@ class Track {
     public String toString() {
         int minutes = (int)(duration/60);
         int seconds = duration%60;
-        String newSeconds = seconds;
+        String newSeconds = String.valueOf(seconds);
         if(seconds<10){
             newSeconds = "0" + String.valueOf(seconds);
         }
@@ -46,9 +46,9 @@ class Track {
     // Returns a string that represents the totalSeconds as "minutes:seconds",
     // Where seconds is always two digits. For example, "3:17" or "12:05".
     private String formattedDuration(int totalSeconds) {
-        int minutes = (int)(Track.totalDuration()/60);
-        int seconds = Track.totalDuration()%60;
-        String newSeconds = seconds;
+        int minutes = totalSeconds/60;
+        int seconds = totalSeconds%60;
+        String newSeconds = String.valueOf(seconds);
         if(seconds<10){
             newSeconds = "0" + String.valueOf(seconds);
         }
