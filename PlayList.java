@@ -68,7 +68,7 @@ class PlayList {
     public int totalDuration() {
         int sumDuration = 0;
         for(int i = 0; i<getSize(); i++){
-            sumDuration += getDuration(tracks[i]);
+            sumDuration += tracks[i].getDuration();
         }
         return sumDuration;
     }
@@ -77,7 +77,7 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
         for(int i = 0; i<getSize(); i++){
-            if(Track.getTitle(tracks[i])==title){
+            if(tracks[i].getTitle()==title){
                 return i;
             }
         }
@@ -122,7 +122,7 @@ class PlayList {
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
         for (int i = 0; i < getSize() ; i++) {
-            if(getTitle(tracks[i]) == title){
+            if(tracks[i].getTitle() == title){
                 remove(i);
             }
         }
@@ -151,14 +151,14 @@ class PlayList {
      *  If start is negative or greater than size - 1, returns -1.
      */
     private int minIndex(int start) {
-        int minDuration = getDuration(tracks[start]);
+        int minDuration = tracks[start].getDuration();
         int place = start;
         if(start<0 || start>getSize()){
             return -1;
         }
         for (int i = start; i<getSize(); i++){
-            if(getDuration(tracks[i])<minDuration){
-                minDuration = getDuration(tracks[i]);
+            if(tracks[i].getDuration()<minDuration){
+                minDuration = tracks[i].getDuration();
                 place = i;
             }
         }
