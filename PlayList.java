@@ -50,7 +50,7 @@ class PlayList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(int i = 0;i<getSize();i++){
-            sb.append(Track.toString(tracks[i]));
+            sb.append(tracks[i].toString());
             sb.append("\n");
         }
         return sb.toString();
@@ -125,6 +125,7 @@ class PlayList {
             if(Track.getTitle(tracks[i]) == title){
                 remove(i);
             }
+        }
     }
 
     /** Removes the first track from this list. If the list is empty, does nothing. */
@@ -177,6 +178,12 @@ class PlayList {
     public void sortedInPlace() {
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
-        //// replace this statement with your code
+         for (int i = 0; i < getSize() - 1; i++) {
+            int minIndex = minIndex(i);
+            Track temp = tracks[i];
+            tracks[i] = tracks[minIndex];
+            tracks[minIndex] = temp;
+    }
+        
     }
 }
